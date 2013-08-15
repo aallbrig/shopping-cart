@@ -1,0 +1,17 @@
+{
+  "name": "shopping-cart",
+  "version": "0.0.0",
+  "description": "Simple shopping cart",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "Andrew Allbright",
+  "license": "BSD",
+  "dependencies": {
+    "grunt-cli": "~0.1.9",
+    "grunt": "~0.4.1",
+    "grunt-contrib": "~0.7.0"
+  }
+}
