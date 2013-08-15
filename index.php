@@ -2,6 +2,7 @@
 //Server Logic
 // $_POST['username'] = 'Pirate';
 // $_POST['password'] = 'Apple';
+session_start();
 global $flash;
 function sanitizeString($var)
 {
@@ -31,6 +32,10 @@ if(isset($_POST['username']) && isset($_POST['password']))
   {
     $flash = '<div class="alert alert-danger flash"><p>Wrong username or password</p></div>';
   }
+}
+elseif(isset($_SESSION['redirectMsg']))
+{
+  $flash = '<div class="alert alert-info flash"><p>$_SESSION["redirectMsg"]</p></div>';
 }
 else
 {
