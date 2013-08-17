@@ -1,5 +1,6 @@
 * 
 {
+  /* !important is against CSS best practices */
   border-radius: 0px !important;
   margin-bottom: 0px !important; 
 }

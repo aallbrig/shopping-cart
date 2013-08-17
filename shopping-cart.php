@@ -16,7 +16,7 @@ if(isset($_SESSION['user']) && isset($_SESSION['pass']))
 else
 {
   $_SESSION['redirectMsg'] = "Redirected you to sign-in form";
-  //header("Location: index.php");
+  header("Location: index.php");
   print("something went wrong");
 }
 
@@ -28,8 +28,14 @@ if(isset($_POST['logout']))
 {
   unset($_SESSION['user']);
   unset($_SESSION['pass']);
+  unset($_POST['logout']);
   session_destroy();
   header("Location: index.php");
+}
+elseif(isset($_POST['buy']))
+{
+  echo("SWAG!  You bought stuff.");
+  unset($_POST['buy']);
 }
 ?>
 
@@ -47,15 +53,16 @@ if(isset($_POST['logout']))
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container" style="">
+  <div class="container">
     <nav></nav>
     <div class="jumbotron">
       <h2>Look at those goodies!</h2>
     </div>
     <div class="row">
-      <div class="col-12">
+      <div class="col-3"></div>
+      <div class="col-6">
         <form action="" method="post">
-          <h4>Logout</h4>
+          <button type="submit" name="buy" class="btn btn-default btn-lg btn-block">Buy all this stuff!</button>
           <button type="submit" name="logout" class="btn btn-default btn-lg btn-block">Logout</button>
         </form>
       </div>

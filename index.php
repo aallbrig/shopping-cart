@@ -5,6 +5,7 @@
 session_start();
 global $flash;
 
+//Don't forget 'lil bobby tables.
 function sanitizeString($var)
 {
   $var = strip_tags($var);
@@ -12,10 +13,8 @@ function sanitizeString($var)
   $var = stripslashes($var);
   return $var;
 }
-if(isset($_SESSION['redirectMsg']))
-  $flash = '<div class="alert alert-danger flash"><p>You didn\'t enter anything in!</p></div>';
 
-//Check the submitted form data 
+//Check the submitted form data... If redirected, output that to user.
 if(isset($_POST['username']) && isset($_POST['password']))
 {
   $user = sanitizeString($_POST['username']);
@@ -40,7 +39,8 @@ if(isset($_POST['username']) && isset($_POST['password']))
 }
 elseif(isset($_SESSION['redirectMsg']))
 {
-  $flash = '<div class="alert alert-info flash"><p>$_SESSION["redirectMsg"]</p></div>';
+  $flash = '<div class="alert alert-danger flash"><p>You\'ve been redirected to this page...!</p></div>';
+  unset($_SESSION['redirectMsg']);
 }
 else
 {
