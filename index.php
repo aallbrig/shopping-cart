@@ -4,6 +4,7 @@
 // $_POST['password'] = 'Apple';
 session_start();
 global $flash;
+
 function sanitizeString($var)
 {
   $var = strip_tags($var);
@@ -11,11 +12,15 @@ function sanitizeString($var)
   $var = stripslashes($var);
   return $var;
 }
+if(isset($_SESSION['redirectMsg']))
+  $flash = '<div class="alert alert-danger flash"><p>You didn\'t enter anything in!</p></div>';
 
+//Check the submitted form data 
 if(isset($_POST['username']) && isset($_POST['password']))
 {
   $user = sanitizeString($_POST['username']);
   $pass = sanitizeString($_POST['password']);
+  echo("user: $user pass: $pass"); //Debug
 
   if($user == "" || $pass == "")
   {
@@ -49,7 +54,7 @@ else
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Kickstarted bootstrap project</title>
+  <title>Shopping Cart</title>
   <!-- bootstap 3 snippet -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
@@ -80,7 +85,8 @@ else
               <label for="password">Password</label>
               <input type="text" class="form-control" id="password" placeholder="The password is Apple" name="password">
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <br>
+            <button type="submit" class="btn btn-default btn-lg btn-block">Submit</button>
           </fieldset>
         </form>
       </div>
